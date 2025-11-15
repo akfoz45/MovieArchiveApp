@@ -37,43 +37,51 @@ Windows Forms + Entity Framework Core ile geliştirilmiştir.
 
 ## 🧱 Mimari (Layered Architecture)
 
-MovieApp/
+MovieApp.WinForms/
 │
 ├── Data/
-│ ├── MovieDbContext.cs
-│ └── Entities/
-│ ├── Movie.cs
-│ ├── User.cs
-│ ├── Rating.cs
-│ ├── WatchListItem.cs
-│ └── Category.cs
+│   ├── MovieDbContext.cs
+│   ├── Entities/
+│   │   ├── Movie.cs
+│   │   ├── User.cs
+│   │   ├── WatchListItem.cs
+│   │   ├── Rating.cs
+│   │   └── Category.cs
 │
 ├── Services/
-│ ├── Interfaces/
-│ │ ├── IAuthService.cs
-│ │ ├── IMovieService.cs
-│ │ ├── IWatchlistService.cs
-│ │ └── IRatingService.cs
-│ ├── AuthService.cs
-│ ├── MovieService.cs
-│ ├── WatchlistService.cs
-│ ├── RatingService.cs
-│ └── Helpers/
-│ └── SessionManager.cs
+│   ├── (Interfaces)/
+│   │   ├── IAuthService.cs
+│   │   └── IMovieService.cs
+│   ├── AuthService.cs
+│   ├── MovieService.cs
+│   ├── WatchlistService.cs
+│   ├── RatingService.cs
+│   └── (Helpers)/
+│       └── SessionManager.cs
 │
-├── Views/
-│ ├── frmLogin.cs
-│ ├── frmSignUp.cs
-│ ├── frmMain.cs
-│ ├── frmHome.cs
-│ ├── frmMovieDetail.cs
-│ ├── frmWatchlist.cs
-│ ├── frmAdmin.cs
-│ ├── frmTopList.cs
-│ └── UserControls/
-│ └── ucInteraction.cs
+├── Views/  (veya Forms/)
+│   ├── frmLogin.cs
+│   ├── frmLogin.Designer.cs
+│   ├── frmSignUp.cs
+│   ├── frmSignUp.Designer.cs
+│   ├── frmMain.cs
+│   ├── frmMain.Designer.cs
+│   ├── frmHome.cs
+│   ├── frmHome.Designer.cs
+│   ├── frmMovieDetail.cs
+│   ├── frmMovieDetail.Designer.cs
+│   ├── frmWatchlist.cs
+│   ├── frmWatchlist.Designer.cs
+│   ├── frmAdmin.cs
+│   ├── frmAdmin.Designer.cs
+│   ├── frmTopList.cs
+│   ├── frmTopList.Designer.cs
+│   │
+│   └── (UserControls)/
+│       └── ucInteraction.cs
 │
-└── Program.cs
+└── Program.cs  (Ana giriş noktası, frmLogin'i başlatır)
+
 
 ---
 
