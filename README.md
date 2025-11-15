@@ -41,12 +41,12 @@ MovieApp/
 │
 ├── Data/
 │ ├── MovieDbContext.cs
-│ ├── Entities/
-│ │ ├── Movie.cs
-│ │ ├── User.cs
-│ │ ├── Rating.cs
-│ │ ├── WatchListItem.cs
-│ │ └── Category.cs
+│ └── Entities/
+│ ├── Movie.cs
+│ ├── User.cs
+│ ├── Rating.cs
+│ ├── WatchListItem.cs
+│ └── Category.cs
 │
 ├── Services/
 │ ├── Interfaces/
@@ -74,7 +74,6 @@ MovieApp/
 │ └── ucInteraction.cs
 │
 └── Program.cs
-
 
 ---
 
@@ -133,7 +132,7 @@ MovieApp/
 
 ### 2) EF Core Migration
 
-Add-Migration InitialCreate
+Add-Migration InitialCreate                                                                                                                                                                                         
 Update-Database
 
 ### 3) Uygulamayı Başlatma
