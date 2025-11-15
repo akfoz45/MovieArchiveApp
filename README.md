@@ -136,7 +136,6 @@ MovieApp/
 Add-Migration InitialCreate
 Update-Database
 
-
 ### 3) Uygulamayı Başlatma
 `Program.cs` içinde:
 
