@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieArchiveApp.Data.Entities;
 using System.IO;
-
 using System.Runtime.InteropServices;
 
 namespace MovieArchiveApp.Data
@@ -11,14 +10,18 @@ namespace MovieArchiveApp.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Rating> Rating { get; set; }
-        public DbSet<WhatchList> WhatchLists { get; set; }
-
+        public DbSet<WatchList> WatchLists { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Veri tabanının oluşturulacağı yer
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MovieArchiveApp.db");
+            string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appFolder = Path.Combine(localAppData, "MovieArchiveApp");
 
-            //Klasöre eklemek istersen, zorunlu değil
+            if (!Directory.Exists(appFolder))
+            {
+                Directory.CreateDirectory(appFolder);
+            }
+
+            string dbPath = Path.Combine(appFolder, "MovieArchiveApp.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
 

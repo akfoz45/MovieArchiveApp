@@ -12,7 +12,7 @@ namespace MovieArchiveApp.Data.Entities
         [Required]
         public string Password { get; set; } = string.Empty;
 
-        public bool IsAdmin { get; set; } = false;
+        //public bool IsAdmin { get; set; } = false;
 
         public List<WatchList> WatchLists { get; set; } = new();
     }

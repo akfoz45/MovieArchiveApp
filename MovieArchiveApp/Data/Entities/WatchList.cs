@@ -2,11 +2,11 @@
 
 namespace MovieArchiveApp.Data.Entities
 {
-    public class WhatchList
+    public class WatchList
     {
         public int Id { get; set; }
 
-        public bool IsWhatched { get; set; } = false;
+        public bool IsWatched { get; set; } = false;
 
         public int UserId { get; set; }
         public User User { get; set; }
