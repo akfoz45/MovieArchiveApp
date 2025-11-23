@@ -1,10 +1,16 @@
-﻿using MovieArchiveApp.Data.Entities;
+﻿// Services/Interfaces/IAuthService.cs
+
+using MovieArchiveApp.Data.Entities;
 
 namespace MovieArchiveApp.Services.Interfaces
 {
     public interface IAuthService
     {
-        bool Register(string username, string password);
-        User? Login(string username, string password);
+        //  Düzeltildi: Sadece işlevi belirten 'SignUp' kullanıldı.
+        User? SignUp(string username, string password, bool isAdmin);
+
+        User? Login(string username, string password);  
+
+        void Logout();
     }
 }

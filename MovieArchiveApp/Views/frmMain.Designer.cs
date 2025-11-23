@@ -28,12 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmMain";
+            frmMainLogOut = new Button();
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // frmMainLogOut
+            // 
+            frmMainLogOut.BackColor = Color.Red;
+            frmMainLogOut.Location = new Point(825, 12);
+            frmMainLogOut.Name = "frmMainLogOut";
+            frmMainLogOut.Size = new Size(178, 83);
+            frmMainLogOut.TabIndex = 0;
+            frmMainLogOut.Text = "Log out";
+            frmMainLogOut.UseVisualStyleBackColor = false;
+            frmMainLogOut.Click += button1_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 50F);
+            label1.Location = new Point(283, 216);
+            label1.Name = "label1";
+            label1.Size = new Size(436, 112);
+            label1.TabIndex = 1;
+            label1.Text = "Main Page";
+            label1.Click += label1_Click;
+            // 
+            // frmMain
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1015, 558);
+            Controls.Add(label1);
+            Controls.Add(frmMainLogOut);
+            Name = "frmMain";
+            Text = "frmMain";
+            Load += frmMain_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button frmMainLogOut;
+        private Label label1;
     }
 }
