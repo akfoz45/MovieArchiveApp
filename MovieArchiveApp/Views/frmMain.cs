@@ -29,7 +29,7 @@ namespace MovieArchiveApp.Views
 
         private void CheckUserPermissions()
         {
-            
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -58,6 +58,16 @@ namespace MovieArchiveApp.Views
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // Butona tıklandığında senin formunu açan kod:
+        private void btnOpenWatchList_Click(object sender, EventArgs e)
+        {
+            // frmWatchList formunu oluştur
+            frmWatchList myForm = new frmWatchList();
+
+            // Formu aç (ShowDialog arkadaki formu kilitler, Show normal açar)
+            myForm.ShowDialog();
         }
     }
 }

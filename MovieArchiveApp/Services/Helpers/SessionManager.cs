@@ -23,5 +23,12 @@ namespace MovieArchiveApp.Services.Helpers // Veya projenizin Helpers namespace'
         }
 
         public static bool IsAdmin => CurrentUser?.IsAdmin ?? false;
+
+
+        // --- EKLENECEK TEK SATIR (KÖPRÜ) ---
+        // Bu satır sayesinde "SessionManager.CurrentUserId" dediğimizde
+        // yukarıdaki kullanıcının ID'sini otomatik alacak.
+        // Eğer kullanıcı yoksa (null), hata vermemek için 0 döndürecek.
+        public static int CurrentUserId => CurrentUser?.Id ?? 0;
     }
 }

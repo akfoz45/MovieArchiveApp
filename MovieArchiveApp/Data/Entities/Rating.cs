@@ -1,11 +1,19 @@
-﻿namespace MovieArchiveApp.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MovieArchiveApp.Data.Entities
 {
     public class Rating
     {
         public int Id { get; set; }
-        public int Score { get; set; }  
+
+        // [Range] eklemek veritabanını bozmaz, sadece kod tarafında koruma sağlar.
+     
+        [Range(1, 10)]
+        public int Score { get; set; }
+
         public int MovieId { get; set; }
         public Movie Movie { get; set; }
+
         public int UserId { get; set; }
         public User User { get; set; }
     }
