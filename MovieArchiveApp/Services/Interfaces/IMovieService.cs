@@ -9,6 +9,7 @@ namespace MovieArchiveApp.Services.Interfaces
         List<Movie> SearchMovies(string query);
 
         void AddMovie(Movie movie);
+        void UpdateMovie(Movie movie);
         void DeleteMovie(int id);
     }
 }

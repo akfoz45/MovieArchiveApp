@@ -28,67 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            frmMainLogOut = new Button();
-            label1 = new Label();
-            btnOpenWatchList = new Button();
-            SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnOpenWatchList = new System.Windows.Forms.Button();
+            this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnOpenHome = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
-            // frmMainLogOut
+            // button1
             // 
-            frmMainLogOut.BackColor = Color.Red;
-            frmMainLogOut.Location = new Point(928, 12);
-            frmMainLogOut.Name = "frmMainLogOut";
-            frmMainLogOut.Size = new Size(200, 83);
-            frmMainLogOut.TabIndex = 0;
-            frmMainLogOut.Text = "Log out";
-            frmMainLogOut.UseVisualStyleBackColor = false;
-            frmMainLogOut.Click += button1_Click;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(888, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 30);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Çıkış Yap";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 50F);
-            label1.Location = new Point(318, 216);
-            label1.Name = "label1";
-            label1.Size = new Size(436, 112);
-            label1.TabIndex = 1;
-            label1.Text = "Main Page";
-            label1.Click += label1_Click;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 21);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Movie Archive";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnOpenWatchList
             // 
-            btnOpenWatchList.BackColor = Color.PaleTurquoise;
-            btnOpenWatchList.Font = new Font("Calibri", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            btnOpenWatchList.ForeColor = Color.DarkSlateGray;
-            btnOpenWatchList.Location = new Point(14, 12);
-            btnOpenWatchList.Name = "btnOpenWatchList";
-            btnOpenWatchList.Size = new Size(151, 52);
-            btnOpenWatchList.TabIndex = 2;
-            btnOpenWatchList.Text = "İzleme Listem";
-            btnOpenWatchList.UseVisualStyleBackColor = false;
-            btnOpenWatchList.Click += btnOpenWatchList_Click;
+            this.btnOpenWatchList.Location = new System.Drawing.Point(12, 90);
+            this.btnOpenWatchList.Name = "btnOpenWatchList";
+            this.btnOpenWatchList.Size = new System.Drawing.Size(150, 40);
+            this.btnOpenWatchList.TabIndex = 2;
+            this.btnOpenWatchList.Text = "İzleme Listem";
+            this.btnOpenWatchList.UseVisualStyleBackColor = true;
+            this.btnOpenWatchList.Click += new System.EventHandler(this.btnOpenWatchList_Click);
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlContent.Location = new System.Drawing.Point(179, 57);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(809, 581);
+            this.pnlContent.TabIndex = 3;
+            // 
+            // btnOpenHome
+            // 
+            this.btnOpenHome.Location = new System.Drawing.Point(12, 44);
+            this.btnOpenHome.Name = "btnOpenHome";
+            this.btnOpenHome.Size = new System.Drawing.Size(150, 40);
+            this.btnOpenHome.TabIndex = 4;
+            this.btnOpenHome.Text = "Ana Sayfa";
+            this.btnOpenHome.UseVisualStyleBackColor = true;
+            this.btnOpenHome.Click += new System.EventHandler(this.btnOpenHome_Click);
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1142, 558);
-            Controls.Add(btnOpenWatchList);
-            Controls.Add(label1);
-            Controls.Add(frmMainLogOut);
-            Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            Name = "frmMain";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmMain";
-            Load += frmMain_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.btnOpenHome);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.btnOpenWatchList);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Name = "frmMain";
+            this.Text = "Movie Archive App";
+            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
 
-        private Button frmMainLogOut;
-        private Label label1;
-        private Button btnOpenWatchList;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnOpenWatchList;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Button btnOpenHome;
     }
 }
