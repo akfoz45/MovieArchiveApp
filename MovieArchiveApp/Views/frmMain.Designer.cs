@@ -2,15 +2,8 @@
 {
     partial class frmMain
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
@@ -33,6 +22,7 @@
             this.btnOpenWatchList = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnOpenHome = new System.Windows.Forms.Button();
+            this.btnOpenAdminPanel = new System.Windows.Forms.Button(); // EKLENDİ
             this.SuspendLayout();
             // 
             // button1
@@ -55,7 +45,6 @@
             this.label1.Size = new System.Drawing.Size(127, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Movie Archive";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnOpenWatchList
             // 
@@ -87,11 +76,23 @@
             this.btnOpenHome.UseVisualStyleBackColor = true;
             this.btnOpenHome.Click += new System.EventHandler(this.btnOpenHome_Click);
             // 
+            // btnOpenAdminPanel
+            // 
+            this.btnOpenAdminPanel.Location = new System.Drawing.Point(12, 136);
+            this.btnOpenAdminPanel.Name = "btnOpenAdminPanel";
+            this.btnOpenAdminPanel.Size = new System.Drawing.Size(150, 40);
+            this.btnOpenAdminPanel.TabIndex = 5;
+            this.btnOpenAdminPanel.Text = "Admin Paneli";
+            this.btnOpenAdminPanel.UseVisualStyleBackColor = true;
+            this.btnOpenAdminPanel.Visible = false; // Başlangıçta gizli
+            this.btnOpenAdminPanel.Click += new System.EventHandler(this.btnOpenAdminPanel_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 650);
+            this.Controls.Add(this.btnOpenAdminPanel);
             this.Controls.Add(this.btnOpenHome);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.btnOpenWatchList);
@@ -112,5 +113,6 @@
         private System.Windows.Forms.Button btnOpenWatchList;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Button btnOpenHome;
+        private System.Windows.Forms.Button btnOpenAdminPanel;
     }
 }
