@@ -1,6 +1,4 @@
-﻿// Services/AuthService.cs
-// AuthService.cs'in başındaki using'ler arasına ekleyin:
-using BCrypt.Net;
+﻿using BCrypt.Net;
 using MovieArchiveApp.Data;
 using MovieArchiveApp.Data.Entities;
 using MovieArchiveApp.Services.Interfaces;
@@ -11,7 +9,6 @@ namespace MovieArchiveApp.Services
     {
         private readonly MovieDbContext _context;
 
-        // ✅ KRİTİK: DI uyumlu Constructor. Program.cs'ten DbContext'i alır.
         public AuthService(MovieDbContext context)
         {
             _context = context;
@@ -20,15 +17,11 @@ namespace MovieArchiveApp.Services
         // Kullanıcı Giriş Metodu
         public User? Login(string username, string password)
         {
-            // 1. Kullanıcıyı bul (Case-Sensitive - ToLower() kaldırıldı)
             var user = _context.Users.FirstOrDefault(u => u.Username == username);
 
-            // 2. Kontrol: Kullanıcı yoksa veya şifre yanlışsa null dön.
-            // PasswordHash kullandığımıza emin olmalıyız.
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
                 return null;
 
-            // 3. Oturumu başlat
             SessionManager.Login(user);
 
             return user;

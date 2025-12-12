@@ -43,7 +43,6 @@ namespace MovieArchiveApp.Views
                     dgvMovies.Columns["Id"].HeaderText = "ID";
                     dgvMovies.Columns["Id"].Width = 50;
                 }
-                // DÜZELTME: frmHome'daki gibi diğer kolon başlıklarını da ayarlamak iyi olur
                 if (dgvMovies.Columns["Title"] != null)
                     dgvMovies.Columns["Title"].HeaderText = "Film Adı";
                 if (dgvMovies.Columns["Year"] != null)

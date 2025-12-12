@@ -1,5 +1,4 @@
-﻿// frmLogin.cs
-using MovieArchiveApp.Data.Entities;
+﻿using MovieArchiveApp.Data.Entities;
 using MovieArchiveApp.Services;
 using MovieArchiveApp.Services.Interfaces;
 using MovieArchiveApp.Views;

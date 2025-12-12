@@ -12,7 +12,6 @@ namespace MovieArchiveApp.Views
 {
     public partial class frmHome : Form
     {
-        // DÜZELTME 1: Derleyici uyarısını susturmak için varsayılan değerlere 'null!' atıyoruz.
         private readonly IMovieService _movieService = null!;
         private readonly IServiceProvider _serviceProvider = null!;
 
@@ -34,7 +33,6 @@ namespace MovieArchiveApp.Views
             dgvMovies.CellDoubleClick += DgvMovies_CellDoubleClick;
         }
 
-        // DÜZELTME 2: Event handler imzasında 'object?' kullanarak null uyarısını çözüyoruz (CS8622).
         private void DgvMovies_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -69,7 +67,6 @@ namespace MovieArchiveApp.Views
             }
         }
 
-        // DÜZELTME 3: Parametrenin null olabileceğini 'string?' ile belirtiyoruz (CS8625).
         private void LoadMovies(string? searchQuery = null)
         {
             // _movieService tasarım modunda null olabilir, kontrol ediyoruz.

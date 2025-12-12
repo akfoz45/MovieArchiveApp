@@ -29,7 +29,7 @@ namespace MovieArchiveApp.Data
             if (!optionsBuilder.IsConfigured)
             {
                 // Buraya kendi bağlantı cümleni yaz (SQL Server örneği):
-              //  optionsBuilder.UseSqlServer("Server=.;Database=MovieArchiveDb;Trusted_Connection=True;TrustServerCertificate=True;");
+                //  optionsBuilder.UseSqlServer("Server=.;Database=MovieArchiveDb;Trusted_Connection=True;TrustServerCertificate=True;");
             }
         }
 
@@ -38,7 +38,7 @@ namespace MovieArchiveApp.Data
         {
             // WatchList İlişkisi 
             modelBuilder.Entity<WatchList>()
-                .HasOne(wl => wl.User) 
+                .HasOne(wl => wl.User)
                 .WithMany(u => u.WatchLists)
                 .HasForeignKey(wl => wl.UserId)
                 .OnDelete(DeleteBehavior.Cascade);

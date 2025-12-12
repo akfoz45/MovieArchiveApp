@@ -9,7 +9,6 @@ namespace MovieArchiveApp.Views
 {
     public partial class frmWatchList : Form
     {
-        // 'null!' diyerek derleyiciye "biliyorum boş görünüyor ama dolacak" diyoruz.
         private readonly WatchListService _service = null!;
 
         // 1. Parametresiz Constructor (Designer Hatası Almamak İçin)

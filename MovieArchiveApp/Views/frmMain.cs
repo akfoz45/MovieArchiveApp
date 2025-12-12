@@ -17,7 +17,6 @@ namespace MovieArchiveApp.Views
     public partial class frmMain : Form
     {
         private readonly IAuthService _authService;
-        // Yeni Eklendi: Diğer formları DI ile yüklemek için IServiceProvider
         private readonly IServiceProvider _serviceProvider;
 
         // Constructor güncellendi: Şimdi IServiceProvider da alıyor
@@ -59,8 +58,6 @@ namespace MovieArchiveApp.Views
             // Bu metot, örneğin Admin paneli butonunu SessionManager'a göre göstermek için kullanılacaktır.
             // Şimdilik sadece Home butonu her zaman açık kalır.
 
-            // YENİ: Admin butonu görünürlüğünü kontrol et
-            // Varsayım: Admin paneli butonu 'btnOpenAdminPanel' adındadır.
             if (btnOpenAdminPanel != null)
             {
                 btnOpenAdminPanel.Visible = SessionManager.IsAdmin;
@@ -69,8 +66,6 @@ namespace MovieArchiveApp.Views
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // YENİ EKLENDİ: Form yüklendiğinde varsayılan olarak frmHome'u aç.
-            // Bu, CRUD butonlarının görünmesini sağlayacaktır.
             LoadChildForm<frmHome>();
         }
 
@@ -95,13 +90,11 @@ namespace MovieArchiveApp.Views
             LoadChildForm<frmWatchList>();
         }
 
-        // Yeni Eklendi: Ana Sayfa Butonu (frmHome'u tekrar yüklemek için)
         private void btnOpenHome_Click(object sender, EventArgs e)
         {
             LoadChildForm<frmHome>();
         }
 
-        // YENİ EKLENDİ: Admin Paneli Butonu (frmAdmin'i yüklemek için)
         private void btnOpenAdminPanel_Click(object sender, EventArgs e)
         {
             // Sadece adminler için

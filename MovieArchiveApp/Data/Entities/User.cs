@@ -12,14 +12,13 @@ namespace MovieArchiveApp.Data.Entities
         public int Id { get; set; }
 
         [Required]
-        public string Username { get; set; } = string.Empty; // <-- CS0117 Düzeltmesi: Username
+        public string Username { get; set; } = string.Empty; 
 
         [Required]
-        public string PasswordHash { get; set; } = string.Empty; // <-- CS0117 Düzeltmesi: PasswordHash
+        public string PasswordHash { get; set; } = string.Empty; 
 
-        public bool IsAdmin { get; set; } = false; // <-- CS0117 Düzeltmesi: IsAdmin
+        public bool IsAdmin { get; set; } = false; 
 
-        // İlişki: WatchLists de burada olmalı.
         public List<WatchList> WatchLists { get; set; } = new();
     }
 }

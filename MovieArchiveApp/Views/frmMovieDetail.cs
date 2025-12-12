@@ -10,14 +10,11 @@ namespace MovieArchiveApp.Views
 {
     public partial class frmMovieDetail : Form
     {
-        // DÜZELTME: "CS8618" hatasını önlemek için varsayılan olarak 'null!' atıyoruz.
-        // Bu, derleyiciye "Biliyorum bu null ama çalışma zamanında dolu gelecek" demektir.
         private readonly WatchListService _watchListService = null!;
         private Movie _movie = null!;
 
         private bool _isInWatchList = false;
 
-        // Parametresiz constructor (Designer hatası almamak için)
         public frmMovieDetail()
         {
             InitializeComponent();

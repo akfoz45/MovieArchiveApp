@@ -1,6 +1,6 @@
 ﻿using MovieArchiveApp.Data;
 using MovieArchiveApp.Data.Entities;
-using Microsoft.EntityFrameworkCore; // <-- DİKKAT: Bu satır çok önemli!
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,7 +27,6 @@ namespace MovieArchiveApp.Services
             {
                 UserId = userId,
                 MovieId = movieId,
-                IsWatched = false
             };
 
             _db.WatchLists.Add(item);
@@ -50,8 +49,6 @@ namespace MovieArchiveApp.Services
         // 3. Kullanıcının Listesini Getir
         public List<Movie> GetUserWatchlist(int userId)
         {
-            // WatchList tablosundan kullanıcının kayıtlarını bul
-            // .Include(w => w.Movie) diyerek filmin detaylarını da yanına al
             return _db.WatchLists
                       .Where(w => w.UserId == userId)
                       .Include(w => w.Movie)
