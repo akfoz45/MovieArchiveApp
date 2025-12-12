@@ -30,6 +30,7 @@ namespace MovieArchiveApp
                     services.AddScoped<IMovieService, MovieService>();
                     services.AddScoped<IAuthService, AuthService>();
 
+                    services.AddScoped<WatchListService>();
                     services.AddTransient<frmLogin>();
                     services.AddTransient<frmHome>();
                     services.AddTransient<frmMain>();
@@ -37,6 +38,7 @@ namespace MovieArchiveApp
                     services.AddTransient<frmMovieCrud>();
                     services.AddTransient<frmAdmin>();
                     services.AddTransient<frmWatchList>();
+                    services.AddTransient<frmMovieDetail>();
                 })
                 .Build();
 

@@ -5,12 +5,12 @@ namespace MovieArchiveApp.Data
 {
     public class MovieDbContext : DbContext
     {
-        // 1. BOŞ CONSTRUCTOR (Senin kodların için gerekli)
+        // 1. BOŞ CONSTRUCTOR 
         public MovieDbContext()
         {
         }
 
-        // 2. AYARLI CONSTRUCTOR (Arkadaşının DI yapısı için gerekli)
+        // 2. AYARLI CONSTRUCTOR
         public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options)
         {
         }
@@ -18,13 +18,11 @@ namespace MovieArchiveApp.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
 
-        // DİKKAT: İsim standardı için 'Rating' değil 'Ratings' (Çoğul) yaptım.
-        // Senin servislerinde _db.Ratings olarak geçiyor çünkü.
         public DbSet<Rating> Ratings { get; set; }
 
         public DbSet<WatchList> WatchLists { get; set; }
 
-        // 3. BAĞLANTI AYARI (Senin kodların için gerekli)
+        // 3. BAĞLANTI AYARI 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Eğer dışarıdan (Program.cs'ten) ayar gelmediyse burası çalışır.
@@ -38,12 +36,20 @@ namespace MovieArchiveApp.Data
         // 4. İLİŞKİLER (Arkadaşının yazdığı kurallar aynen duruyor)
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // WatchList İlişkisi 
             modelBuilder.Entity<WatchList>()
-                .HasOne<User>() // User nesnesiyle ilişki
-                .WithMany(u => u.WatchLists) // User'ın WatchLists listesiyle eşleşir
+                .HasOne(wl => wl.User) 
+                .WithMany(u => u.WatchLists)
                 .HasForeignKey(wl => wl.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<WatchList>()
+                .HasOne(wl => wl.Movie)
+                .WithMany()
+                .HasForeignKey(wl => wl.MovieId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Rating İlişkisi
             modelBuilder.Entity<Rating>()
                 .HasOne(r => r.Movie)
                 .WithMany(m => m.Ratings)

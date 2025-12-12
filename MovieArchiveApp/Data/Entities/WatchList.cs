@@ -11,9 +11,9 @@ namespace MovieArchiveApp.Data.Entities
 
         // İlişkiler
         public int UserId { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = null!;
 
         public int MovieId { get; set; }
-        public Movie Movie { get; set; }
+        public Movie Movie { get; set; } = null!;
     }
 }

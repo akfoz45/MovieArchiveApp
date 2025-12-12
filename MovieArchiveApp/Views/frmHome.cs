@@ -1,42 +1,66 @@
-﻿using MovieArchiveApp.Data.Entities;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MovieArchiveApp.Data.Entities;
+using MovieArchiveApp.Services.Helpers;
 using MovieArchiveApp.Services.Interfaces;
+using MovieArchiveApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using MovieArchiveApp.Services.Helpers; // SessionManager için eklendi
 
 namespace MovieArchiveApp.Views
 {
     public partial class frmHome : Form
     {
-        private readonly IMovieService _movieService;
+        // DÜZELTME 1: Derleyici uyarısını susturmak için varsayılan değerlere 'null!' atıyoruz.
+        private readonly IMovieService _movieService = null!;
+        private readonly IServiceProvider _serviceProvider = null!;
 
-        // YENİ EKLENEN: Tasarımcının (Designer) Formu Başlatması İçin Parametresiz Constructor
+        // Tasarımcı (Designer) için boş constructor
         public frmHome()
         {
-            // Bu constructor sadece tasarım zamanında kullanılır.
             InitializeComponent();
         }
 
-        // Dependency Injection için Constructor (Çalışma Zamanında Kullanılan)
-        public frmHome(IMovieService movieService) : this() // Parametresiz constructor'ı çağırır
+        // Dependency Injection Constructor
+        public frmHome(IMovieService movieService, IServiceProvider serviceProvider) : this()
         {
             _movieService = movieService;
+            _serviceProvider = serviceProvider;
+
             ConfigureDataGridView();
-            CheckUserPermissions(); // YENİ: İzinleri kontrol et
+            CheckUserPermissions();
+
+            dgvMovies.CellDoubleClick += DgvMovies_CellDoubleClick;
         }
 
-        // DataGridView ayarlarını yapar.
+        // DÜZELTME 2: Event handler imzasında 'object?' kullanarak null uyarısını çözüyoruz (CS8622).
+        private void DgvMovies_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var selectedMovie = (Movie)dgvMovies.Rows[e.RowIndex].DataBoundItem;
+
+            if (selectedMovie != null)
+            {
+                var watchListService = _serviceProvider.GetRequiredService<WatchListService>();
+
+                using (var detailForm = new frmMovieDetail(selectedMovie, watchListService))
+                {
+                    detailForm.ShowDialog();
+                }
+            }
+        }
+
         private void ConfigureDataGridView()
         {
-            // Kolon ayarlamaları burada yapılır.
+            dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMovies.MultiSelect = false;
+            dgvMovies.ReadOnly = true;
         }
 
-        // YENİ METOT: Kullanıcı yetkilerine göre CRUD butonlarını ayarlar
         private void CheckUserPermissions()
         {
-            // Admin değilse CRUD butonlarını gizle.
             if (!SessionManager.IsAdmin)
             {
                 if (btnAddMovie != null) btnAddMovie.Visible = false;
@@ -45,10 +69,10 @@ namespace MovieArchiveApp.Views
             }
         }
 
-        // Filmleri yükleyen merkezi metot (READ operasyonu)
-        private void LoadMovies(string searchQuery = null)
+        // DÜZELTME 3: Parametrenin null olabileceğini 'string?' ile belirtiyoruz (CS8625).
+        private void LoadMovies(string? searchQuery = null)
         {
-            // Kontrol eklendi: Eğer tasarım anındaysak, _movieService null olabilir.
+            // _movieService tasarım modunda null olabilir, kontrol ediyoruz.
             if (_movieService == null) return;
 
             List<Movie> movies;
@@ -64,7 +88,7 @@ namespace MovieArchiveApp.Views
 
             dgvMovies.DataSource = movies;
 
-            // Kolon başlıklarını kullanıcı dostu hale getir
+            // Kolon Ayarları
             if (dgvMovies.Columns["Id"] != null)
             {
                 dgvMovies.Columns["Id"].Visible = true;
@@ -73,20 +97,30 @@ namespace MovieArchiveApp.Views
             }
             if (dgvMovies.Columns["Title"] != null)
                 dgvMovies.Columns["Title"].HeaderText = "Film Adı";
+
+            // ReleaseYear veya Year kontrolü
+            if (dgvMovies.Columns["ReleaseYear"] != null)
+                dgvMovies.Columns["ReleaseYear"].HeaderText = "Yıl";
             if (dgvMovies.Columns["Year"] != null)
                 dgvMovies.Columns["Year"].HeaderText = "Yıl";
+
             if (dgvMovies.Columns["Genre"] != null)
                 dgvMovies.Columns["Genre"].HeaderText = "Tür";
             if (dgvMovies.Columns["Director"] != null)
                 dgvMovies.Columns["Director"].HeaderText = "Yönetmen";
+
+            // Gizlenecek Kolonlar
             if (dgvMovies.Columns["Description"] != null)
                 dgvMovies.Columns["Description"].Visible = false;
+            if (dgvMovies.Columns["PosterPath"] != null)
+                dgvMovies.Columns["PosterPath"].Visible = false;
             if (dgvMovies.Columns["PosterUrl"] != null)
                 dgvMovies.Columns["PosterUrl"].Visible = false;
+            if (dgvMovies.Columns["Ratings"] != null)
+                dgvMovies.Columns["Ratings"].Visible = false;
         }
 
-        // Form ilk yüklendiğinde filmleri getir.
-        private void frmHome_Load(object sender, EventArgs e)
+        private void frmHome_Load(object? sender, EventArgs e)
         {
             if (_movieService != null)
             {
@@ -96,7 +130,6 @@ namespace MovieArchiveApp.Views
 
         // --- CRUD OPERASYONLARI ---
 
-        // Yeni Film Ekle butonu (CREATE operasyonu)
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
             using (var frm = new frmMovieCrud(_movieService))
@@ -108,7 +141,6 @@ namespace MovieArchiveApp.Views
             }
         }
 
-        // Filmi Düzenle butonu (UPDATE operasyonu)
         private void btnEditMovie_Click(object sender, EventArgs e)
         {
             if (dgvMovies.SelectedRows.Count == 0)
@@ -135,7 +167,6 @@ namespace MovieArchiveApp.Views
             }
         }
 
-        // Filmi Sil butonu (DELETE operasyonu)
         private void btnDeleteMovie_Click(object sender, EventArgs e)
         {
             if (dgvMovies.SelectedRows.Count == 0)
@@ -166,7 +197,6 @@ namespace MovieArchiveApp.Views
             }
         }
 
-        // Arama butonu (READ/Search operasyonu)
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadMovies(txtSearch.Text);

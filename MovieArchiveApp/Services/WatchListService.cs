@@ -10,9 +10,9 @@ namespace MovieArchiveApp.Services
     {
         private readonly MovieDbContext _db;
 
-        public WatchListService()
+        public WatchListService(MovieDbContext db)
         {
-            _db = new MovieDbContext();
+            _db = db;
         }
 
         // 1. Listeye Ekle

@@ -7,15 +7,12 @@ namespace MovieArchiveApp.Views
 {
     public partial class frmMovieCrud : Form
     {
-        private readonly IMovieService _movieService;
-
+        private readonly IMovieService _movieService = null!;
         private Movie _movieToEdit;
-
 
         public frmMovieCrud()
         {
             InitializeComponent();
-            // Designer hatasını önlemek ve null uyarısını çözmek için boş nesne atıyoruz.
             _movieToEdit = new Movie();
         }
 
