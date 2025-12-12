@@ -102,9 +102,6 @@ namespace MovieArchiveApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsWatched")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
 

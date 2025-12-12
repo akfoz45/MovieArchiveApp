@@ -196,7 +196,6 @@ namespace MovieArchiveApp.Views
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            LoadMovies(txtSearch.Text);
         }
     }
 }

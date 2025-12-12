@@ -36,22 +36,25 @@
             // dgvList
             // 
             dgvList.AllowUserToAddRows = false;
+            dgvList.AllowUserToDeleteRows = false;
             dgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvList.BackgroundColor = Color.White;
             dgvList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvList.Dock = DockStyle.Left;
             dgvList.Location = new Point(0, 0);
             dgvList.Name = "dgvList";
+            dgvList.ReadOnly = true;
             dgvList.RowHeadersWidth = 51;
             dgvList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvList.Size = new Size(469, 450);
+            dgvList.Size = new Size(469, 591);
             dgvList.TabIndex = 0;
+            dgvList.CellContentClick += dgvList_CellContentClick;
             // 
             // btnRemove
             // 
             btnRemove.Anchor = AnchorStyles.None;
             btnRemove.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRemove.Location = new Point(558, 197);
+            btnRemove.Location = new Point(521, 270);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(169, 62);
             btnRemove.TabIndex = 1;
@@ -63,7 +66,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(724, 591);
             Controls.Add(btnRemove);
             Controls.Add(dgvList);
             Name = "frmWatchList";

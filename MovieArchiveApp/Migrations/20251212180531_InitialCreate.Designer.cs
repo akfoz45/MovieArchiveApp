@@ -10,7 +10,7 @@ using MovieArchiveApp.Data;
 namespace MovieArchiveApp.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20251212121855_InitialCreate")]
+    [Migration("20251212180531_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -103,9 +103,6 @@ namespace MovieArchiveApp.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsWatched")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("MovieId")

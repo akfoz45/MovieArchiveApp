@@ -76,7 +76,6 @@ namespace MovieArchiveApp.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    IsWatched = table.Column<bool>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
                     MovieId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
