@@ -36,7 +36,6 @@ namespace MovieArchiveApp.Views
                 // DataGridView'a bağla
                 dgvMovies.DataSource = movies; // Display the movies in the table.
 
-                // DÜZELTME: Admin panelinde ID sütununu görünür yap
                 if (dgvMovies.Columns.Contains("Id")) // Check for the ID column.
                 {
                     dgvMovies.Columns["Id"].Visible = true; // Show the ID column.

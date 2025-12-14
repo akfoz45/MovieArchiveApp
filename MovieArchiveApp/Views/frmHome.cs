@@ -125,7 +125,7 @@ namespace MovieArchiveApp.Views
             }
         }
 
-        // --- CRUD OPERASYONLARI (CRUD OPERATIONS) ---
+        // --- CRUD OPERATIONS ---
 
         private void btnAddMovie_Click(object sender, EventArgs e) // This is the click event for the 'Add Movie' button.
         {

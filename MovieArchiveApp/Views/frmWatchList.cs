@@ -9,7 +9,6 @@ namespace MovieArchiveApp.Views
 {
     public partial class frmWatchList : Form
     {
-        // 'null!' diyerek derleyiciye "biliyorum boş görünüyor ama dolacak" diyoruz.
         private readonly WatchListService _service = null!; // This service handles the Watch List.
 
         // 1. Parametresiz Constructor (Designer Hatası Almamak İçin)
@@ -51,11 +50,6 @@ namespace MovieArchiveApp.Views
             // 2. ADIM: Veritabanından Çekme
             List<Movie> myMovies = _service.GetUserWatchlist(userId); // Get the user's watch list movies.
 
-            // DEBUG: Veri Sayısı Kontrolü (Sorun çözülünce bu satırı silebilirsiniz)
-            if (myMovies.Count == 0) // Check if there are any movies.
-            {
-                MessageBox.Show("Sorgu çalıştı ancak veritabanından hiç film gelmedi. Kayıt yapılmamış olabilir."); // Show message if the list is empty.
-            }
 
             // 3. ADIM: Ekrana Basma
             dgvList.DataSource = null; // Clear the old data.

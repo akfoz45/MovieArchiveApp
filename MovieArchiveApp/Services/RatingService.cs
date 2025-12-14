@@ -13,20 +13,19 @@ namespace MovieArchiveApp.Services
             _db = new MovieDbContext(); // Initialize the database context (Note: often done with DI).
         }
 
-        // 1. Puan Ver veya Güncelle (Give Rating or Update)
         public void GiveRating(int userId, int movieId, int score) // This function lets a user rate a movie.
         {
             var rating = _db.Ratings.FirstOrDefault(r => r.UserId == userId && r.MovieId == movieId); // Find the user's existing rating.
 
             if (rating == null) // If no rating is found.
             {
-                // İlk defa puan veriyor (First time rating)
+                // First time ratin
                 rating = new Rating { UserId = userId, MovieId = movieId, Score = score }; // Create a new rating object.
                 _db.Ratings.Add(rating); // Add the new rating to the database context.
             }
             else // If a rating already exists.
             {
-                // Zaten vermiş, puanını değiştiriyor (User gave a score before, now changing it)
+                // User gave a score before, now changing it
                 rating.Score = score; // Update the score.
             }
             _db.SaveChanges(); // Save all changes to the database.
@@ -42,7 +41,7 @@ namespace MovieArchiveApp.Services
             return ratings.Average(r => r.Score); // Calculate and return the average score.
         }
 
-        // 3. Kullanıcının Kendi Puanını Getir (Ekranda göstermek için) (Get User's Own Score)
+        // Get User's Own Score
         public int GetUserScore(int userId, int movieId) // This function gets the score given by a specific user.
         {
             var rating = _db.Ratings.FirstOrDefault(r => r.UserId == userId && r.MovieId == movieId); // Find the user's specific rating.

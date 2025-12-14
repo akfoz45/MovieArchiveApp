@@ -14,7 +14,7 @@ namespace MovieArchiveApp.Services
             _context = context; // Set the database context.
         }
 
-        // Kullanıcı Giriş Metodu (User Login Method)
+        // User Login Method
         public User? Login(string username, string password) // Function to log in a user.
         {
             var user = _context.Users.FirstOrDefault(u => u.Username == username); // Find the user by username.
@@ -27,7 +27,7 @@ namespace MovieArchiveApp.Services
             return user; // Return the user object if successful.
         }
 
-        // Kullanıcı Kayıt Metodu (User Sign Up Method)
+        // User Sign Up Method
         public User? SignUp(string username, string password, bool isAdmin) // Function to register a new user.
         {
             // 1. Check if the username is unique.

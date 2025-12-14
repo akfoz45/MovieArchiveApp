@@ -10,7 +10,7 @@ using MovieArchiveApp.Data;
 namespace MovieArchiveApp.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20251212180531_InitialCreate")]
+    [Migration("20251214090933_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

@@ -17,7 +17,7 @@ namespace MovieArchiveApp.Services
             _db = db; // Set the database context.
         }
 
-        // --- READ (OKUMA) METOTLARI (READ METHODS) ---
+        // --- READ METHODS ---
 
         public List<Movie> GetAllMovies() // This function gets all movies.
         {
@@ -40,7 +40,7 @@ namespace MovieArchiveApp.Services
                 .ToList(); // Convert the result to a list.
         }
 
-        // --- CREATE (EKLEME) METODU (CREATE METHOD) ---
+        // --- CREATE METHOD ---
 
         public void AddMovie(Movie movie) // This function adds a new movie (used by the 'Add' button).
         {
@@ -49,7 +49,7 @@ namespace MovieArchiveApp.Services
             _db.SaveChanges(); // Save changes to the database.
         }
 
-        // --- UPDATE (GÜNCELLEME) METODU (UPDATE METHOD) ---
+        // --- UPDATE METHOD ---
 
         public void UpdateMovie(Movie movie) // This function updates an existing movie (used by the 'Edit' button).
         {
@@ -59,7 +59,7 @@ namespace MovieArchiveApp.Services
             _db.SaveChanges(); // Save changes to the database.
         }
 
-        // --- DELETE (SİLME) METODU (DELETE METHOD) ---
+        // --- DELETE METHOD ---
 
         public void DeleteMovie(int id) // This function deletes a movie by its ID (used by the 'Delete' button).
         {

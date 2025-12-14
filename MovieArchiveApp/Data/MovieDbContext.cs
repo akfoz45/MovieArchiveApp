@@ -5,12 +5,12 @@ namespace MovieArchiveApp.Data
 {
     public class MovieDbContext : DbContext // This class is the connection to the database.
     {
-        // 1. BOŞ CONSTRUCTOR (EMPTY CONSTRUCTOR)
+        // EMPTY CONSTRUCTOR
         public MovieDbContext() // Default constructor.
         {
         }
 
-        // 2. AYARLI CONSTRUCTOR (CONFIGURED CONSTRUCTOR)
+        // CONFIGURED CONSTRUCTOR
         public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options) // Constructor that receives options (used for DI).
         {
         }
@@ -22,7 +22,7 @@ namespace MovieArchiveApp.Data
 
         public DbSet<WatchList> WatchLists { get; set; } // This is the Watch Lists table.
 
-        // 3. BAĞLANTI AYARI (CONNECTION SETTING)
+        // CONNECTION SETTING
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Function to configure the database connection.
         {
             // If settings did not come from outside (from Program.cs), this runs.
@@ -33,7 +33,7 @@ namespace MovieArchiveApp.Data
             }
         }
 
-        // 4. İLİŞKİLER (RELATIONSHIPS)
+        // RELATIONSHIPS
         protected override void OnModelCreating(ModelBuilder modelBuilder) // Function to define table relationships.
         {
             // WatchList Relationship

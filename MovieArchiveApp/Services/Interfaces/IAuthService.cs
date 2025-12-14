@@ -1,6 +1,4 @@
-﻿// Services/Interfaces/IAuthService.cs
-
-using MovieArchiveApp.Data.Entities;
+﻿using MovieArchiveApp.Data.Entities;
 
 namespace MovieArchiveApp.Services.Interfaces
 {

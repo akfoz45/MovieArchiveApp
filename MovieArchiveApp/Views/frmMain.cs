@@ -29,12 +29,8 @@ namespace MovieArchiveApp.Views
             CheckUserPermissions(); // Check if the user is an admin or a regular user.
         }
 
-        // YENİ METOT: Formları pnlContent içine yüklemek için
         private void LoadChildForm<T>() where T : Form // This function opens a form inside the main panel.
         {
-            // Tüm mevcut kontrolleri (önceki formu) temizle
-            // Varsayım: Ana içerik paneli adı pnlContent'tir. 
-            // Eğer sizde farklı bir panel varsa (örneğin panel1), pnlContent yerine onu kullanın.
             if (pnlContent.Controls.Count > 0) // Check if there are other controls in the panel.
             {
                 pnlContent.Controls.Clear(); // Clear the panel. Remove the old form.
