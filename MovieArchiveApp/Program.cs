@@ -30,7 +30,6 @@ namespace MovieArchiveApp
                     services.AddTransient<IMovieService, MovieService>();
                     services.AddTransient<IAuthService, AuthService>();
                     services.AddTransient<WatchListService>();
-                    services.AddTransient<RatingService>();
 
                     services.AddTransient<frmLogin>();
                     services.AddTransient<frmHome>();

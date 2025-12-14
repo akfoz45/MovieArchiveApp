@@ -13,6 +13,5 @@ namespace MovieArchiveApp.Data.Entities
         public string Director { get; set; } = string.Empty; // The name of the movie director.
         public string Genre { get; set; } = string.Empty; // The genre of the movie (e.g., Action, Drama).
         public string PosterPath { get; set; } = string.Empty; // The path or URL to the movie poster image.
-        public List<Rating> Ratings { get; set; } = new(); // Navigation property: A list of all ratings for this movie.
     }
 }

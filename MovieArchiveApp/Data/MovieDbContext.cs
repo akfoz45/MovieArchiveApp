@@ -18,8 +18,6 @@ namespace MovieArchiveApp.Data
         public DbSet<Movie> Movies { get; set; } // This is the Movies table in the database.
         public DbSet<User> Users { get; set; } // This is the Users table.
 
-        public DbSet<Rating> Ratings { get; set; } // This is the Ratings table.
-
         public DbSet<WatchList> WatchLists { get; set; } // This is the Watch Lists table.
 
         // CONNECTION SETTING
@@ -48,19 +46,6 @@ namespace MovieArchiveApp.Data
                 .WithMany() // A Movie can be in many WatchLists.
                 .HasForeignKey(wl => wl.MovieId) // Movie ID is the foreign key.
                 .OnDelete(DeleteBehavior.Cascade); // Delete WatchList items when the Movie is deleted.
-
-            // Rating Relationship
-            modelBuilder.Entity<Rating>()
-        .HasOne(r => r.Movie) // A Rating belongs to one Movie.
-                .WithMany(m => m.Ratings) // A Movie has many Ratings.
-                .HasForeignKey(r => r.MovieId) // Movie ID is the foreign key.
-                .OnDelete(DeleteBehavior.Cascade); // Delete Ratings when the Movie is deleted.
-
-            modelBuilder.Entity<Rating>()
-        .HasOne(r => r.User) // A Rating belongs to one User.
-                .WithMany() // A User can give many Ratings.
-                .HasForeignKey(r => r.UserId) // User ID is the foreign key.
-                .OnDelete(DeleteBehavior.Restrict); // Do not delete the User if there are ratings (restrict).
 
             base.OnModelCreating(modelBuilder); // Call the base implementation.
         }
