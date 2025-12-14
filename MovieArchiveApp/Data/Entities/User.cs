@@ -5,20 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieArchiveApp.Data.Entities
 {
-    public class User
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+    public class User // This class defines the User table structure.
+    {
+        [Key] // This is the primary key for the table.
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // The ID value is generated automatically by the database.
+        public int Id { get; set; } // The unique user ID.
 
-        [Required]
-        public string Username { get; set; } = string.Empty; 
+        [Required] // This field must be filled.
+        public string Username { get; set; } = string.Empty; // The user's chosen username.
 
-        [Required]
-        public string PasswordHash { get; set; } = string.Empty; 
+        [Required] // This field must be filled.
+        public string PasswordHash { get; set; } = string.Empty; // The hashed and secure version of the password.
 
-        public bool IsAdmin { get; set; } = false; 
+        public bool IsAdmin { get; set; } = false; // A flag to check if the user is an administrator.
 
-        public List<WatchList> WatchLists { get; set; } = new();
-    }
+        public List<WatchList> WatchLists { get; set; } = new(); // Navigation property: A list of the user's watch list entries.
+    }
 }

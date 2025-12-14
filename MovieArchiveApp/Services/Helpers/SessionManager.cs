@@ -6,29 +6,28 @@ using MovieArchiveApp.Data.Entities;
 
 namespace MovieArchiveApp.Services.Helpers // Veya projenizin Helpers namespace'i
 {
-    public static class SessionManager
-    {
-        public static User? CurrentUser { get; private set; }
+    public static class SessionManager // This class manages the user's session data.
+    {
+        public static User? CurrentUser { get; private set; } // This holds the user object when logged in.
 
-        public static bool IsLoggedIn => CurrentUser != null;
+        public static bool IsLoggedIn => CurrentUser != null; // Checks if a user is currently logged in.
 
-        public static void Login(User user)
-        {
-            CurrentUser = user;
-        }
+        public static void Login(User user) // This function starts the session.
+        {
+            CurrentUser = user; // Set the current user.
+        }
 
-        public static void Logout()
-        {
-            CurrentUser = null;
-        }
+        public static void Logout() // This function ends the session (used by the 'Exit' button).
+        {
+            CurrentUser = null; // Clear the current user.
+        }
 
-        public static bool IsAdmin => CurrentUser?.IsAdmin ?? false;
+        public static bool IsAdmin => CurrentUser?.IsAdmin ?? false; // Checks if the logged-in user is an admin.
 
 
-        // --- EKLENECEK TEK SATIR (KÖPRÜ) ---
-        // Bu satır sayesinde "SessionManager.CurrentUserId" dediğimizde
-        // yukarıdaki kullanıcının ID'sini otomatik alacak.
-        // Eğer kullanıcı yoksa (null), hata vermemek için 0 döndürecek.
-        public static int CurrentUserId => CurrentUser?.Id ?? 0;
-    }
+        // --- EKLENECEK TEK SATIR (KÖPRÜ) ---
+        // This line is for easily getting the user's ID.
+        // If the user is null, it returns 0 to prevent errors.
+        public static int CurrentUserId => CurrentUser?.Id ?? 0; // Gets the ID of the current user.
+    }
 }
